@@ -1,22 +1,23 @@
 import { SwipeableDrawer } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useInsertionEffect, useState } from 'react';
 import TinderCard from 'react-tinder-card';
-import './TinderCards.css'
+import './TinderCards.css';
+import instance from './axios';
+
 
 function TinderCards() {
 
-    const [people, setPeople] = useState([
-        {
-            name: "John Doe",
-            url:'https://pixabay.com/get/g69f34334f00be35c796920062af0f3feaa7aa52adcfdcc5f6de26e7bd81907925ca736c8080a028e8695d939d40ee01cd821299330fa97aba5f212da6825ff3f_1920.jpg'
-        },
-        {
-            name: "Kate Ro",
-            url:'https://pixabay.com/get/g01e791ecd4e82b46885b2ca01784caf658808210f736a52a4f72e0a497bfb0c05aca3c6d53ea9a7c7523cfcb99d533885828ed3b5c7a0c77675e016380e64ad3_1920.jpg'
-        },
-    ]);
+    const [people, setPeople] = useState([]);
 
+    useInsertionEffect(() => {
+        async function fetchData() {
+            const req = await instance.get("/tinder/cards");
+            setPeople(req.data);
+        }
+        fetchData();
+    }, [])
 
+    console.log(people)
     // If user is swiped 
 
     const swiped = (dir, nametoDelete) => {

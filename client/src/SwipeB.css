@@ -1,6 +1,7 @@
 .swipeBtn{
 
   position: fixed;
+  max-width:600px;
   bottom: 10vh;
   margin: auto;
   left:0;
