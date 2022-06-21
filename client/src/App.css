@@ -4,3 +4,24 @@
   border:0;
   font-family: Robooto, Helvetica, sans-serif;
 }
+
+/*HEADER */
+
+
+  .header{
+    max-width:1000px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1em auto 0;
+
+  }
+  
+  .header_logo{
+    width:48px;
+  }
+  
+  .header_profile_icon, .header_chat_icon{
+    font-size: 40px!important;
+  }
+
